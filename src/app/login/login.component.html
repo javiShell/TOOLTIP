@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<header>
+
+</header>
+<body>
+    <div class="titulo">{{titulo}}</div>
+    <div class="eslogan">{{eslogan}}</div>
+    <div class="form">
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <label for="usuario"></label>
+            <div class="margen2">
+            <input  id="usuario" type="text" formControlName="usuario">
+            <input  id="pass" type="password" formControlName="contraseña">
+        </div>
+            <div class="margen">
+                <button type="submit">Iniciar sesión</button>
+                <button type="submit">Registrarse</button>
+                <button type="button" (click)="invitado()">Acceder como invitado</button>
+            </div>
+        </form>
+       
+    </div>
+</body>
+
+
+</html>

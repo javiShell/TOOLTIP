@@ -1,34 +1,47 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Cinzel&display=swap');
 
+@media only screen and (max-width: 767px) {
 
+    body {
+    
+    background-image: url("../../assets/img/login.png");
+    
+    }
+}
 
 body {
-background-color: linear-gradient(to bottom, rgb(99, 201, 241), white);
+background: linear-gradient(to bottom, rgb(99, 201, 241), white);
 background-size: cover;
       
 }
-.titulo {
 
-    font-family: 'Cinzel';
-    font-size: 100px;
-    font-weight: bold;
-    text-align: center;
-    padding-top: 40px;
-
+.titulo{
+        font-family: 'Cinzel';
+        font-size: xx-large;
+        font-weight: bold;
+        text-align: center;
+        padding-top: 40px;
+    
+    
 }
-button {
+
+.buttons {
+    
+    text-align: center;
     margin-top: 200px;
-    width: 40%;
-    -moz-border-radius: 15px;
-    -webkit-border-radius: 15px;
-    border-radius: 20px;
-    background-color: lightblue;
-
 }
 
-div.centrado{
-    text-align: center;
+button {
+    width: 25%;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 5px;
+    padding: 0.5em 1em;
+    border: 1px solid #000000;
+    background: rgb(232, 236, 238);
+    cursor: pointer;
+    margin: 0.5rem;
+    padding: 15px;
 }
 
 .btn-material {
