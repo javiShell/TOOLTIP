@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Usuarios } from '../usuarios';
+import { USUARIOSService } from '../usuarios.service';
 
 
 @Component({
@@ -15,28 +17,41 @@ export class LoginComponent implements OnInit {
 
   titulo: string = "TOOLTIP";
   eslogan: string = "Encuentra justo lo que necesitas";
-
-  loginForm: FormGroup = new FormGroup(
-    {
-    usuario: new FormControl(),
-    contraseña: new FormControl()
-    }
-  );
+  username!: string;
+  password!: string;
 
 
-  constructor(private formBuilder: FormBuilder,private router: Router) { }
+  constructor(private formBuilder: FormBuilder,private router: Router,  private userService: USUARIOSService) { }
 
   ngOnInit(): void {
   }
-  
-  onSubmit(){
 
+  
+  
+  onSubmitForm(){
+    const user = {username: this.username, password: this.password};
+    this.userService.login(user).subscribe( data => {
+      try{
+      console.log(data);
+      this.userService.setToken(data.toString());
+      this.router.navigateByUrl('/categorias');
+      }catch(e){
+          console.error(e);
+          
+      }
+    });
   }
+  
+   
+   
+ 
 
   invitado(){
 
     this.router.navigate(['/categorias'])
 
   }
+
+
 
 }

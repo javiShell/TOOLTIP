@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-categoria-moviles',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CategoriaMovilesComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
 
+  navegarCategorias(){
+    this.router.navigate(['/categoriasMoviles']);
+  }
 }

@@ -1,3 +1,4 @@
+@import "~bootstrap/dist/css/bootstrap.min.css";
 body {
     background: linear-gradient(to bottom, rgb(99, 201, 241), white);
     background-size: cover;

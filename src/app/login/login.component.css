@@ -1,5 +1,4 @@
 
-
 @import url('https://fonts.googleapis.com/css2?family=Cinzel&display=swap');
 
 @media only screen and (max-width: 767px) {
@@ -14,17 +13,27 @@
 body {
 background: linear-gradient(to bottom, rgb(99, 201, 241), white);
 background-size: cover;
+
       
 
 }
 
-img {
-    display: inline-flex;
-    z-index: 99;
-    left: 50%;
-    transform: translateX(-50%);
-    top: 32px;
-    opacity: 0.2;
+.fondo {
+    background-color: linear-gradient(to bottom, rgb(99, 201, 241), white);
+}
+
+img{
+    width: 25px;
+}
+
+.imagenFondo {
+   filter: brightness(1.1);
+   mix-blend-mode: multiply;
+   display:block;
+   margin: auto;
+   background-image: url("../../assets/img/login.png");
+   opacity: 0.4;
+   
 }
 
 .titulo {
