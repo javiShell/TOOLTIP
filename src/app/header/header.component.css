@@ -1,6 +1,23 @@
 @import "~bootstrap/dist/css/bootstrap.min.css";
+@import url('https://fonts.googleapis.com/css2?family=Cinzel&display=swap');
+@media only screen and (max-width: 767px) {
+
+  body {
+  
+  background-image: url("../../assets/img/login.png");
+  
+  }
+}
 nav {
     background: rgb(37, 166, 226);
+}
+
+
+.user {
+  text-decoration: none;
+  color: azure;
+  margin-left: 85%;
+  font-size: x-large;
 }
 
 .btn-material {

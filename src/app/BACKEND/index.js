@@ -15,7 +15,6 @@ app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({extended: false}));
 
 passport.use('local', localStrategy);
-console.log(passport)
 app.use(passport.initialize());
 
 app.use('/auth', require('./routes/auth'))

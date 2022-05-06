@@ -16,6 +16,7 @@ import { CategoriasMovilesComponent } from './categorias-moviles/categorias-movi
 import { PersonalizacionComponent } from './personalizacion/personalizacion.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
+import { RegisterComponent } from './register/register.component';
 
 
 
@@ -33,6 +34,7 @@ import { CookieService } from 'ngx-cookie-service';
     CategoriasOrdenadoresComponent,
     CategoriasMovilesComponent,
     PersonalizacionComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,

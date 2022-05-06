@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -14,7 +14,7 @@ import { USUARIOSService } from '../usuarios.service';
 export class LoginComponent implements OnInit {
 
 
-
+  isLogged: boolean = false;
   titulo: string = "TOOLTIP";
   eslogan: string = "Encuentra justo lo que necesitas";
   username!: string;
@@ -34,6 +34,7 @@ export class LoginComponent implements OnInit {
       try{
       console.log(data);
       this.userService.setToken(data.toString());
+      localStorage.setItem("sesion",user.username)
       this.router.navigateByUrl('/categorias');
       }catch(e){
           console.error(e);
@@ -49,6 +50,12 @@ export class LoginComponent implements OnInit {
   invitado(){
 
     this.router.navigate(['/categorias'])
+
+  }
+
+  registro(){
+
+    this.router.navigate(['/register'])
 
   }
 

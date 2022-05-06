@@ -3,25 +3,22 @@
 <header>
 
 </header>
-<app-header [isLogged]="!isLogged"></app-header>
+<app-header></app-header>
 <body>
-    <div class="titulo">{{titulo}}</div>
-    <div class="eslogan">{{eslogan}}</div>
+    <div class="titulo">{{registro}}</div>
     <div class="form">
         <form (ngSubmit) = "onSubmitForm()" method="post">
             <div class="margen2">
+            <input  id="nombre" type="text" name="nombre" placeholder="Nombre" required="required" [(ngModel)]="nombre">
+            <input  id="apellidos" type="text" name="apellidos" placeholder="Apellidos" required="required" [(ngModel)]="apellidos">
+            <input  id="email" type="text" name="email" placeholder="Email" required="required" [(ngModel)]="email">    
             <input  id="username" type="text" name="username" placeholder="Nombre de usuario" required="required" [(ngModel)]="username">
             <input  id="password" type="password" name="password" placeholder="Contraseña" required="required" [(ngModel)]="password">
         </div>
             <div class="margen">
-                <button type="submit">Iniciar sesión</button>
-                <button type="button" (click)="registro()">Registrarse</button>
-                <button type="button" (click)="invitado()">Acceder como invitado</button>
+                <button type="submit">Guardar registro</button>
             </div>
         </form>
-    </div>
-    <div class="margen" >
-        <img  data-toggle="tooltip" data-placement="left" title="Para almacenar contenido personalizado inicia sesión" src="../../assets/informacion.png">
     </div>
 </body>
 <app-footer></app-footer>

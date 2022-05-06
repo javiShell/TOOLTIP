@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { USUARIOSService } from '../usuarios.service';
 
 @Component({
   selector: 'app-categoria-lista',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CategoriaListaComponent implements OnInit {
 
-  constructor() { }
+  token: any;
+
+  isLogged: boolean = false;
+  constructor(private userService: USUARIOSService) { }
 
   ngOnInit(): void {
+    if(this.userService.getToken()){
+      this.isLogged = true;
+      this.token =  localStorage.getItem("sesion");
+
+    }
   }
 
 }

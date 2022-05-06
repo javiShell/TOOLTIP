@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +9,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+@Input()
+token: any;
+
+  @Input()
+  isLogged: boolean | undefined;
+
+  constructor(private routes: Router, private cookies:  CookieService) { }
 
   ngOnInit(): void {
+    console.log(this.token)
+
+  }
+  lista(){
+    this.routes.navigateByUrl('/lista').then();
+  }
+  logout(){
+    this.routes.navigate(['/login'])
+    localStorage.clear()
+    sessionStorage.clear()
+    this.cookies.deleteAll();
   }
 
 }

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
+import { USUARIOSService } from '../usuarios.service';
 
 @Component({
   selector: 'app-categorias',
@@ -8,13 +10,20 @@ import { Router } from '@angular/router';
 })
 export class CategoriasComponent implements OnInit {
 
-
+  isLogged: boolean = false;
   categorias: string = "CATEGORIAS";
+  sesion = [];
+  token: any;
 
 
-  constructor(private routes: Router) { }
+  constructor(private routes: Router, private userService: USUARIOSService, private cookies: CookieService) { }
 
   ngOnInit(): void {
+    if(this.userService.getToken()){
+     this.token =  localStorage.getItem("sesion");
+      console.log(this.token)
+      this.isLogged = true;
+    }
   }
 
   IrOrdenadores(){

@@ -1,0 +1,68 @@
+@import "~bootstrap/dist/css/bootstrap.min.css";
+@import url('https://fonts.googleapis.com/css2?family=Cinzel&display=swap');
+
+@media only screen and (max-width: 767px) {
+
+    body {
+    
+    background-image: url("../../assets/img/login.png");
+    
+    }
+}
+
+body {
+background: linear-gradient(to bottom, rgb(99, 201, 241), white);
+background-size: cover;
+      
+}
+
+.titulo{
+        font-family: 'Cinzel';
+        font-size: xx-large;
+        font-weight: bold;
+        text-align: center;
+        padding-top: 40px;
+    
+    
+}
+
+.buttons {
+    
+    text-align: center;
+    margin-top: 200px;
+}
+
+button {
+    width: 25%;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 5px;
+    padding: 0.5em 1em;
+    border: 1px solid #000000;
+    background: rgb(232, 236, 238);
+    cursor: pointer;
+    margin: 0.5rem;
+    padding: 15px;
+}
+
+.btn-material {
+    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2),
+      0 2px 2px 0 rgba(0, 0, 0, 0.14),
+      0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    transition: background-color 15ms linear,
+      box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+  
+   
+  }
+  
+  .btn-material:hover, .btn-material:focus {
+    box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2),
+      0 4px 5px 0 rgba(0, 0, 0, 0.14),
+      0 1px 10px 0 rgba(0, 0, 0, 0.12);
+  }
+  
+  .btn-material:active {
+    box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+      0 8px 10px 1px rgba(0, 0, 0, 0.14),
+      0 3px 14px 2px rgba(0, 0, 0, 0.12);
+  }

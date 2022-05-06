@@ -1,8 +1,8 @@
 <nav class="navbar navbar-expand-lg navbar-light btn-material">
   <div class="container-fluid">
     <a href="javascript: history.go(-1)"><img src="../../assets/img/atras.png"></a>
-
-    <a href="/"><img src="../../assets/img/iconoAtras.png"></a>
+    <a class="user" (click)="lista()" *ngIf="isLogged">{{token}}</a>
+    <a (click)="logout()"><img src="../../assets/img/iconoAtras.png"></a>
     
   </div>
 </nav>

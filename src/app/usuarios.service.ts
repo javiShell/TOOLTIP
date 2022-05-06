@@ -11,7 +11,7 @@ import { CookieService } from "ngx-cookie-service";
 export class USUARIOSService {
 
   //Endpoint del Backend
-  private backendURL: string = "http://localhost:3000/addUsers";
+  private backendURL: string = "http://localhost:3000/";
    
   constructor(
     //HttpClient para proporcionar métodos que reciben datos del backend
@@ -35,9 +35,12 @@ export class USUARIOSService {
   getToken() {
     return this.cookies.get("token");
   }
+  getSesionUser() {
+    return this.cookies.get("user");
+  }
 
-  //POST
-  createUser(user: Usuarios): Observable<Object>{
-    return this.httpClient.post(`${this.backendURL}`, user);
+  createUser(user: any): Observable<any>{
+    console.log(user)
+    return this.httpClient.post(`${this.backendURL}auth/signup`, user);
   }
 }
