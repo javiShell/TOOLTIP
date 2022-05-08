@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html>
 <header>
-
 </header>
 <app-header [isLogged]="!isLogged"></app-header>
 <body>
     <div class="titulo">{{titulo}}</div>
     <div class="eslogan">{{eslogan}}</div>
     <div class="form">
-        <form (ngSubmit) = "onSubmitForm()" method="post">
+        <form  (ngSubmit)="onSubmitForm()" [formGroup]="form" method="post" id="formulario">
             <div class="margen2">
-            <input  id="username" type="text" name="username" placeholder="Nombre de usuario" required="required" [(ngModel)]="username">
-            <input  id="password" type="password" name="password" placeholder="Contraseña" required="required" [(ngModel)]="password">
-        </div>
+                <div class="alert alert-danger" role="alert" *ngIf="!noSesion">Nombre de usuario y/o contraseña incorrectos</div>
+                <input matInput name="username"  type="text" formControlName="username" placeholder="Nombre de usuario" >
+                <div class="alert alert-danger" role="alert" *ngIf="username.errors?.['required'] && username.touched">Nombre de usuario requerido</div>
+                <input matInput name="password"  type="password" formControlName="password" placeholder="Contraseña" >
+                <div class="alert alert-danger" role="alert" *ngIf="password.errors?.['required'] && password.touched">Contraseña requerida</div>
+            </div>
             <div class="margen">
                 <button type="submit">Iniciar sesión</button>
                 <button type="button" (click)="registro()">Registrarse</button>
@@ -20,10 +22,12 @@
             </div>
         </form>
     </div>
-    <div class="margen" >
-        <img  data-toggle="tooltip" data-placement="left" title="Para almacenar contenido personalizado inicia sesión" src="../../assets/informacion.png">
+    <div class="margen">
+        <img data-toggle="tooltip" data-placement="left" title="Para almacenar contenido personalizado inicia sesión"
+            src="../../assets/informacion.png">
     </div>
 </body>
 <app-footer></app-footer>
+
 
 </html>
