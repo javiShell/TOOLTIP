@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
   }
 
   username: FormControl = new FormControl('', [
-    Validators.required,
+    Validators.required,Validators.maxLength(50)
   ]);
   password: FormControl = new FormControl('', [
     Validators.required,
@@ -43,18 +43,21 @@ export class LoginComponent implements OnInit {
     const user = { username: this.username.value, password: this.password.value };
 
     this.userService.login(user).subscribe(data => {
-      try {
+     
         console.log(data);
         this.userService.setToken(data.toString());
         localStorage.setItem("sesion", JSON.stringify(this.username.value))
         this.router.navigateByUrl('/categorias');
-        this.noSesion = false;
-      } catch (e) {
-        console.error(e);
-      }
+   
     });
+
+  if (localStorage.getItem("sesion")){
+    this.noSesion = false;
+    console.log(this.noSesion)
+  }
   }
 
+  
 
 
 

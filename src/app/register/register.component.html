@@ -7,16 +7,36 @@
 <body>
     <div class="titulo">{{registro}}</div>
     <div class="form">
-        <form (ngSubmit) = "onSubmitForm()" method="post">
+        <form (ngSubmit) = "onSubmitForm()" method="post" [formGroup]="form">
             <div class="margen2">
-            <input  id="nombre" type="text" name="nombre" placeholder="Nombre" required="required" [(ngModel)]="nombre">
-            <input  id="apellidos" type="text" name="apellidos" placeholder="Apellidos" required="required" [(ngModel)]="apellidos">
-            <input  id="email" type="text" name="email" placeholder="Email" required="required" [(ngModel)]="email">    
-            <input  id="username" type="text" name="username" placeholder="Nombre de usuario" required="required" [(ngModel)]="username">
-            <input  id="password" type="password" name="password" placeholder="Contraseña" required="required" [(ngModel)]="password">
+            <div *ngIf="form.get('username')?.invalid && (form.get('username')?.dirty || username.get('username')?.touched)">
+                <div class="alert alert-danger" role="alert"
+                *ngIf="username.errors?.['required']">Nombre de usuario requerido</div>
+            </div>
+            <div *ngIf="form.get('nombre')?.invalid && (form.get('nombre')?.dirty || nombre.get('nombre')?.touched)">
+                <div class="alert alert-danger" role="alert"
+                *ngIf="nombre.errors?.['required']">Nombre requerido</div>
+            </div>
+            <div *ngIf="form.get('apellidos')?.invalid && (form.get('apellidos')?.dirty || apellidos.get('apellidos')?.touched)">
+                <div class="alert alert-danger" role="alert"
+                *ngIf="apellidos.errors?.['required']">Apellidos requeridos</div>
+            </div>
+            <div *ngIf="form.get('email')?.invalid && (form.get('email')?.dirty || email.get('email')?.touched)">
+                <div class="alert alert-danger" role="alert"
+                *ngIf="email.errors?.['required']">Email requerido</div>
+            </div>
+            <div *ngIf="form.get('password')?.invalid && (form.get('password')?.dirty || password.get('password')?.touched)">
+                <div class="alert alert-danger" role="alert"
+                *ngIf="password.errors?.['required']">Contraseña requerida</div>
+            </div>
+            <input matInput id="nombre" type="text" name="nombre" placeholder="Nombre" formControlName="nombre">
+            <input matInput id="apellidos" type="text" name="apellidos" placeholder="Apellidos" formControlName="apellidos">
+            <input matInput id="email" type="text" name="email" placeholder="Email" required="required"  ng-pattern=" ^[a-z]+[a-z0-9._-]+@[a-z]+\.[a-z.]{2,5}$" formControlName="email">    
+            <input matInput id="username" type="text" name="username" placeholder="Nombre de usuario" formControlName="username">
+            <input matInput id="password" type="password" name="password" placeholder="Contraseña" formControlName="password">
         </div>
             <div class="margen">
-                <button type="submit">Guardar registro</button>
+                <button class="btn-material" type="submit">Guardar registro</button>
             </div>
         </form>
     </div>

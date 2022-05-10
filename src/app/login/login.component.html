@@ -3,22 +3,34 @@
 <header>
 </header>
 <app-header [isLogged]="!isLogged"></app-header>
+
 <body>
     <div class="titulo">{{titulo}}</div>
     <div class="eslogan">{{eslogan}}</div>
     <div class="form">
-        <form  (ngSubmit)="onSubmitForm()" [formGroup]="form" method="post" id="formulario">
+        <form (ngSubmit)="onSubmitForm()" [formGroup]="form" method="post" id="formulario">
             <div class="margen2">
-                <div class="alert alert-danger" role="alert" *ngIf="!noSesion">Nombre de usuario y/o contraseña incorrectos</div>
-                <input matInput name="username"  type="text" formControlName="username" placeholder="Nombre de usuario" >
-                <div class="alert alert-danger" role="alert" *ngIf="username.errors?.['required'] && username.touched">Nombre de usuario requerido</div>
-                <input matInput name="password"  type="password" formControlName="password" placeholder="Contraseña" >
-                <div class="alert alert-danger" role="alert" *ngIf="password.errors?.['required'] && password.touched">Contraseña requerida</div>
+                <div class="alert alert-danger" role="alert" *ngIf="!noSesion">Nombre de usuario y/o contraseña
+                    incorrectos</div>
+                <div *ngIf="form.get('username')?.invalid && (form.get('username')?.dirty || username.get('username')?.touched)">
+                    <div class="alert alert-danger" role="alert"
+                        *ngIf="username.errors?.['required']">Nombre de usuario requerido</div>
+                   
+                        <div class="alert alert-danger" role="alert" *ngIf="username.errors?.['maxLength']">El nombre de usurio
+                            solo puede tener como máximo 50 caractéres</div>
+                </div>
+                <div *ngIf="form.get('password')?.invalid && (form.get('password')?.dirty || username.get('password')?.touched)">
+                    <div class="alert alert-danger" role="alert"
+                    *ngIf="password.errors?.['required'] ">Contraseña requerida</div>
+                </div>
+                
+                <input matInput name="username" type="text" formControlName="username" placeholder="Nombre de usuario">
+                <input matInput name="password" type="password" formControlName="password" placeholder="Contraseña">
             </div>
             <div class="margen">
-                <button type="submit">Iniciar sesión</button>
-                <button type="button" (click)="registro()">Registrarse</button>
-                <button type="button" (click)="invitado()">Acceder como invitado</button>
+                <button class="btn-material" type="submit">Iniciar sesión</button>
+                <button class="btn-material"  type="button" (click)="registro()">Registrarse</button>
+                <button class="btn-material" type="button" (click)="invitado()">Acceder como invitado</button>
             </div>
         </form>
     </div>
