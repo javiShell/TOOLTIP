@@ -2,7 +2,7 @@
 const express = require('express'),
 router = express.Router(),
 { _create, _findByUsername } = require('../controllers/users'),
-{ _createArticulo, _findByArticuloName, _findArticulos } = require('../controllers/articulos'),
+{ _createArticulo, _findByArticuloName, _findArticulos,_findArticulosCategoria } = require('../controllers/articulos'),
 passport = require('passport'),
 jwt = require('jsonwebtoken');
 
@@ -55,10 +55,16 @@ router.post('/insertArticulos', async(req, res) => {
 
 router.post('/getProductos', async (req, res) => {
     try {
-        const foundArticulo = await _findArticulos(req.body.categoria);
-        console.log(foundArticulo)
-        if(foundArticulo){
-            return  res.status(201).json(`El artículo ${foundArticulo.nombre} ya existe`);;
+        var result = [];
+        console.log(req.body)
+        const foundArticulos = await _findArticulosCategoria(req.body);
+        var json = JSON.stringify(foundArticulos);
+        var articulos = JSON.parse(json);
+        for(i in articulos){
+            result[i] = articulos[i];
+        }
+        if(foundArticulos){
+            return  res.status(201).json(result);
         }
        
     } catch (e) {

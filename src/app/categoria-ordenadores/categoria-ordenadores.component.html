@@ -5,6 +5,7 @@
 </header>
 <app-header [isLogged]="isLogged"  [token]="token"></app-header>
 <body>
+  <div>
     <nav id="menu">
         <ul>
          <li><a href="#">Ordenadores</a>
@@ -17,59 +18,29 @@
             </ul>
      
     </nav>
-        <form class="form-inline form">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+  </div>
+  <br>
+  <br>
+  <br>
+  <br>
+  
+    <div style="text-align: center;margin-left: 30%;">
+        <form  style="width: 60%;">
+          <input class="form-control mr-sm-1" type="text" placeholder="Buscar un producto..." aria-label="Search"  [(ngModel)]="search"  [ngModelOptions]="{standalone: true}">
         </form>
-      <div class="card-group tamaño">
-        <div class="card">
-          <img class="card-img-top" src="../../assets/pc2.png" alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-          </div>
-        </div>
-        <div class="card">
-          <img class="card-img-top" src="../../assets/pc2.png" alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-          </div>
-        </div>
-        <div class="card">
-          <img class="card-img-top" src="../../assets/pc2.png" alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-          </div>
-        </div>
-        <div class="card">
-            <img class="card-img-top" src="../../assets/pc2.png" alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-            </div>
-          </div>
-          <div class="card">
-            <img class="card-img-top" src="../../assets/pc2.png" alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-            </div>
-          </div>
-          <div class="card">
-            <img class="card-img-top" src="../../assets/pc2.png" alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-            </div>
-          </div>
       </div>
+        <div class=" row row-cols-1 row-cols-md-4 g-4 tamaño">
+        <div *ngFor="let articulo of articulos | Filter: search">
+        <div class="card">
+          <img class="card-img-top" src="../../assets/pc2.png" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">{{articulo["nombre"] | json}}</h5>
+            <p class="card-text">{{articulo["descripcion"] | json}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
 </body>
 <app-footer></app-footer>
 

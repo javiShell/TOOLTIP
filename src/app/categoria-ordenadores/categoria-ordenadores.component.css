@@ -8,9 +8,12 @@ body {
 
 .tamaño {
 
-    width: 60%;
-    margin-left: 400px;
-    margin-top: 100px;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3%;
+    overflow-y: auto;
+    height: 40em;
 }
 
 

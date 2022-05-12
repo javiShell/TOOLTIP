@@ -17,6 +17,7 @@ import { PersonalizacionComponent } from './personalizacion/personalizacion.comp
 import { HttpClientModule } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import { RegisterComponent } from './register/register.component';
+import { FiltroPipe } from './filtro.pipe';
 
 
 
@@ -35,6 +36,7 @@ import { RegisterComponent } from './register/register.component';
     CategoriasMovilesComponent,
     PersonalizacionComponent,
     RegisterComponent,
+    FiltroPipe,
   ],
   imports: [
     BrowserModule,
