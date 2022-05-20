@@ -12,6 +12,8 @@ export class HeaderComponent implements OnInit {
 @Input()
 token: any;
 
+@Input()
+login: boolean| undefined;
   @Input()
   isLogged: boolean | undefined;
 

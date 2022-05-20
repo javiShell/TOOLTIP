@@ -2,7 +2,9 @@
 const express = require('express'),
 router = express.Router(),
 { _create, _findByUsername } = require('../controllers/users'),
-{ _createArticulo, _findByArticuloName, _findArticulos,_findArticulosCategoria } = require('../controllers/articulos'),
+{ _createArticulo, _findByArticuloName, _findArticulos,_findArticulosCategoria, _findArticulosCategoriasOrdenadores, _findArticulosCategoriasMoviles } = require('../controllers/articulos'),
+{_findCategorias} = require('../controllers/categorias'),
+{_findCategoriasMoviles} = require('../controllers/categoriasMoviles'),
 passport = require('passport'),
 jwt = require('jsonwebtoken');
 
@@ -58,6 +60,81 @@ router.post('/getProductos', async (req, res) => {
         var result = [];
         console.log(req.body)
         const foundArticulos = await _findArticulosCategoria(req.body);
+        var json = JSON.stringify(foundArticulos);
+        var articulos = JSON.parse(json);
+        for(i in articulos){
+            result[i] = articulos[i];
+        }
+        if(foundArticulos){
+            return  res.status(201).json(result);
+        }
+       
+    } catch (e) {
+        return res.status(500).json(e.status + e.message);
+    }
+})
+
+
+router.get('/getCategorias', async (req, res) => {
+    try {
+        var result = [];
+        console.log(req.body)
+        const foundCtegorias = await _findCategorias();
+        var json = JSON.stringify(foundCtegorias);
+        var categorias = JSON.parse(json);
+        for(i in categorias){
+            result[i] = categorias[i];
+        }
+        if(foundCtegorias){
+            return  res.status(201).json(result);
+        }
+       
+    } catch (e) {
+        return res.status(500).json(e.status + e.message);
+    }
+})
+
+router.get('/getCategorias2', async (req, res) => {
+    try {
+        var result = [];
+        console.log(req.body)
+        const foundCtegorias = await _findCategoriasMoviles();
+        var json = JSON.stringify(foundCtegorias);
+        var categorias = JSON.parse(json);
+        for(i in categorias){
+            result[i] = categorias[i];
+        }
+        if(foundCtegorias){
+            return  res.status(201).json(result);
+        }
+       
+    } catch (e) {
+        return res.status(500).json(e.status + e.message);
+    }
+})
+
+router.post('/getProductosCategorias', async (req, res) => {
+    try {
+        var result = [];
+        const foundArticulos = await _findArticulosCategoriasOrdenadores(req.body);
+        var json = JSON.stringify(foundArticulos);
+        var articulos = JSON.parse(json);
+        for(i in articulos){
+            result[i] = articulos[i];
+        }
+        if(foundArticulos){
+            return  res.status(201).json(result);
+        }
+       
+    } catch (e) {
+        return res.status(500).json(e.status + e.message);
+    }
+})
+
+router.post('/getProductosCategoriasMoviles', async (req, res) => {
+    try {
+        var result = [];
+        const foundArticulos = await _findArticulosCategoriasMoviles(req.body);
         var json = JSON.stringify(foundArticulos);
         var articulos = JSON.parse(json);
         for(i in articulos){

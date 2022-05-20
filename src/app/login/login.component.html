@@ -2,7 +2,7 @@
 <html>
 <header>
 </header>
-<app-header [isLogged]="!isLogged"></app-header>
+<app-header [isLogged]="!isLogged"  [login]="login"></app-header>
 
 <body>
     <div class="titulo">{{titulo}}</div>
@@ -10,7 +10,7 @@
     <div class="form">
         <form (ngSubmit)="onSubmitForm()" [formGroup]="form" method="post" id="formulario">
             <div class="margen2">
-                <div class="alert alert-danger" role="alert" *ngIf="!noSesion">Nombre de usuario y/o contraseña
+                <div class="alert alert-danger" role="alert" *ngIf="noSesion">Nombre de usuario y/o contraseña
                     incorrectos</div>
                 <div *ngIf="form.get('username')?.invalid && (form.get('username')?.dirty || username.get('username')?.touched)">
                     <div class="alert alert-danger" role="alert"
@@ -34,8 +34,8 @@
             </div>
         </form>
     </div>
-    <div class="margen">
-        <img data-toggle="tooltip" data-placement="left" title="Para almacenar contenido personalizado inicia sesión"
+    <div style="text-align:center; margin-top:10px;">
+        <img  width="50%" data-toggle="tooltip" data-placement="left" title="Para almacenar contenido personalizado inicia sesión"
             src="../../assets/informacion.png">
     </div>
 </body>

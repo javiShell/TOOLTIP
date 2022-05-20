@@ -22,12 +22,23 @@ module.exports = (sequelize, DataTypes) => {
         categoria: {
             type: Sequelize.INTEGER,
             required: true,
-            allowNull: false,
-            len: [6, 20]
+            allowNull: false
+        }, categoriasOrdenador:{
+            type: Sequelize.INTEGER,
+            required: true,
+            allowNull: false
+          },
+        img: {
+            type: Sequelize.STRING,
+            required: false
         }
+       
 
-    }, {
+    },{
         underscored: true,
-        paranoid: true
+        paranoid: true,
+        charset: 'utf8'
     })
+
+
 }

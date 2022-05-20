@@ -28,5 +28,29 @@ export class ArticulosService {
     return this.httpClient.post("http://localhost:3000/auth/getProductos",categorias);
   }
 
+  findArticulosByCategoriasOrdenadores(categoria: any): Observable<any> {
+    console.log(categoria)
+    var categorias = [
+        {"categoriasOrdenadores": categoria}
+    ]
+  return this.httpClient.post("http://localhost:3000/auth/getProductosCategorias",categorias);
+}
+
+  findCategorias(): Observable<any>{
+    return this.httpClient.get("http://localhost:3000/auth/getCategorias");
+  }
+
+  findCategoriasMoviles(): Observable<any>{
+    return this.httpClient.get("http://localhost:3000/auth/getCategorias2");
+  }
+
+  findArticulosByCategoriasMoviles(categoria: any): Observable<any> {
+    console.log(categoria)
+    var categorias = [
+        {"categoriasOrdenadores": categoria}
+    ]
+  return this.httpClient.post("http://localhost:3000/auth/getProductosCategoriasMoviles",categorias);
+}
+  
   
 }

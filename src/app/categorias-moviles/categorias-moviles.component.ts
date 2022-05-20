@@ -20,4 +20,6 @@ export class CategoriasMovilesComponent implements OnInit {
     }
   }
 
+  
+
 }

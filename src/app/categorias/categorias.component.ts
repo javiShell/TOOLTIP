@@ -14,6 +14,8 @@ export class CategoriasComponent implements OnInit {
   categorias: string = "CATEGORIAS";
   sesion = [];
   token: any;
+  login: boolean = false;
+
 
 
   constructor(private routes: Router, private userService: USUARIOSService, private cookies: CookieService) { }

@@ -13,14 +13,14 @@ import { USUARIOSService } from '../usuarios.service';
 })
 export class LoginComponent implements OnInit {
 
-
+  login: boolean = false;
   isLogged: boolean = false;
   titulo: string = "TOOLTIP";
   eslogan: string = "Encuentra justo lo que necesitas";
   resultado!: string;
   form!: FormGroup;
   errors = [];
-  noSesion: boolean = true;
+  noSesion: boolean = false;
   constructor(private formBuilder: FormBuilder, private router: Router, private userService: USUARIOSService) { 
     
   }
@@ -36,6 +36,7 @@ export class LoginComponent implements OnInit {
       username: this.username,
       password: this.password, 
     });
+    this.login = true;
   }
 
 
@@ -46,13 +47,13 @@ export class LoginComponent implements OnInit {
      
         console.log(data);
         this.userService.setToken(data.toString());
-        localStorage.setItem("sesion", JSON.stringify(this.username.value))
+        localStorage.setItem("sesion", JSON.parse(JSON.stringify(this.username.value)))
         this.router.navigateByUrl('/categorias');
    
     });
 
   if (localStorage.getItem("sesion")){
-    this.noSesion = false;
+    this.noSesion = true;
     console.log(this.noSesion)
   }
   }
@@ -64,7 +65,9 @@ export class LoginComponent implements OnInit {
 
   invitado() {
 
+    this.isLogged = false;
     this.router.navigate(['/categorias'])
+
 
   }
 

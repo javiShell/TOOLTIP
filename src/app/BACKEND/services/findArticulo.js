@@ -1,4 +1,3 @@
-const { callbackify } = require('util');
 const db = require('../models');
 
 
@@ -9,6 +8,22 @@ async function findByArticuloName(nombre) {
             nombre: nombre
         }
     });
+}
+
+async function findArticulosCategoriasOrdenadores(categoria) {
+    var categoriasOrdenadores  = JSON.stringify(categoria[0].categoriasOrdenadores)
+    if (!categoriasOrdenadores ) throw new Error('Categoria del artículo no dada');
+    var ids = await db.categorias.findAll({ where: {nombre: categoria[0].categoriasOrdenadores} });
+    return await db.articulos.findAll({ where: { categoriasOrdenador: ids[0].id,
+                                                 categoria: 1    } });
+}
+
+async function findArticulosCategoriasMoviles(categoria) {
+    var categoriasOrdenadores  = JSON.stringify(categoria[0].categoriasOrdenadores)
+    if (!categoriasOrdenadores ) throw new Error('Categoria del artículo no dada');
+    var ids = await db.categoriasMoviles.findAll({ where: {nombre: categoria[0].categoriasOrdenadores} });
+    return await db.articulos.findAll({ where: { categoriasOrdenador: ids[0].id,
+                                                 categoria: 2    } });
 }
 
 async function findArticulosCategoria(categoria) {
@@ -24,5 +39,7 @@ async function findArticulos() {
 module.exports = {
     findByArticuloName,
     findArticulos,
-    findArticulosCategoria
+    findArticulosCategoria,
+    findArticulosCategoriasOrdenadores,
+    findArticulosCategoriasMoviles
 }

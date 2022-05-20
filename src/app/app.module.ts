@@ -18,6 +18,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import { RegisterComponent } from './register/register.component';
 import { FiltroPipe } from './filtro.pipe';
+import { CartComponent } from './cart/cart.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { ProductsComponent } from './products/products.component';
+import { ProductComponent } from './product/product.component';
 
 
 
@@ -37,6 +41,10 @@ import { FiltroPipe } from './filtro.pipe';
     PersonalizacionComponent,
     RegisterComponent,
     FiltroPipe,
+    CartComponent,
+    NavbarComponent,
+    ProductsComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule,

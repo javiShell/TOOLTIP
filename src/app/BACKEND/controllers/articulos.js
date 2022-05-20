@@ -1,7 +1,8 @@
 const { create} = require('../services/createArticulo');
-const { findByArticuloName } = require('../services/findArticulo');
+const { findByArticuloName, findArticulosCategoriasMoviles } = require('../services/findArticulo');
 const { findArticulos } = require('../services/findArticulo');
 const {findArticulosCategoria} = require('../services/findArticulo');
+const {findArticulosCategoriasOrdenadores} = require('../services/findArticulo');
 
 
 
@@ -21,9 +22,19 @@ async function _findArticulosCategoria(categoria){
     return findArticulosCategoria(categoria);
 }
 
+async function _findArticulosCategoriasOrdenadores(categoria){
+    return findArticulosCategoriasOrdenadores(categoria);
+}
+
+async function _findArticulosCategoriasMoviles(categoria){
+    return findArticulosCategoriasMoviles(categoria);
+}
+
 module.exports = {
     _createArticulo,
     _findByArticuloName,
     _findArticulos,
-    _findArticulosCategoria
+    _findArticulosCategoria,
+    _findArticulosCategoriasOrdenadores,
+    _findArticulosCategoriasMoviles
 }
