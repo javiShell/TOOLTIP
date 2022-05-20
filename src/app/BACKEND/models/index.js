@@ -2,8 +2,8 @@
 const fs = require('fs');
 const path = require('path');
 const Sequelize = require('sequelize-oracle');
-const oracledb = require('oracledb');
-oracledb.initOracleClient({libDir: 'C:\\instantclient_21_3'});
+//const oracledb = require('oracledb');
+//oracledb.initOracleClient({libDir: 'C:\\instantclient_21_3'});
 const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || 'development';
 const config = require(__dirname + '/../config/config.json')[env];
