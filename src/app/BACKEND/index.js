@@ -1,4 +1,4 @@
-
+const path = require('path');
 const port = process.env.PORT || 3000,
 express = require('express'),
 app = express(),
@@ -8,13 +8,8 @@ bodyparser = require('body-parser'),
 passport = require('passport'),
 localStrategy = require('./passport/local');
 
+app.use(express.static(path.join((__dirname, 'app'))));
 
-const path = require('path');
-
-app.use(express.static(__dirname+'/dist/tooltip'));
-app.get('/',function(req,res){
-    res.sendFile(path.join(__dirname+'/dist/tooltip/index.html'));
-});
 
 app.listen(process.env.PORT || 8080);
 
