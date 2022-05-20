@@ -2,11 +2,11 @@
 const port = process.env.PORT || 3000,
 express = require('express'),
 app = express(),
-db = require('./app/BACKEND/models'),
+db = require('./BACKEND/models'),
 cors = require('cors'),
 bodyparser = require('body-parser'),
 passport = require('passport'),
-localStrategy = require('./app/BACKEND/passport/local');
+localStrategy = require('./BACKEND/passport/local');
 
 
 const path = require('path');
@@ -26,7 +26,7 @@ app.use(bodyparser.urlencoded({extended: false}));
 passport.use('local', localStrategy);
 app.use(passport.initialize());
 
-app.use('/auth', require('./app/BACKEND/routes/auth'))
+app.use('/auth', require('./BACKEND/routes/auth'))
 
 app.listen(port, () => {
     console.log(`Servidor corriendo en puerto ${port}...`);
