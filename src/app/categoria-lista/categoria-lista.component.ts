@@ -1,6 +1,6 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { USUARIOSService } from '../usuarios.service';
-import { HttpService } from '../http.service';
+
 @Component({
   selector: 'app-categoria-lista',
   templateUrl: './categoria-lista.component.html',
@@ -22,7 +22,7 @@ export class CategoriaListaComponent implements OnInit {
 
   
   
-  constructor(private userService: USUARIOSService,private http: HttpService) {
+  constructor(private userService: USUARIOSService) {
 
    }
 
