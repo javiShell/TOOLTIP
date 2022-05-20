@@ -2,16 +2,16 @@
 const port = process.env.PORT || 3000,
 express = require('express'),
 app = express(),
-db = require('./BACKEND/models'),
+db = require('./models'),
 cors = require('cors'),
 bodyparser = require('body-parser'),
 passport = require('passport'),
-localStrategy = require('./BACKEND/passport/local');
+localStrategy = require('./passport/local');
 
 
 const path = require('path');
 
-app.use(express.static(__dirname+'/dist/ng-blog'));
+app.use(express.static(__dirname+'/dist/tooltip'));
 app.get('/',function(req,res){
     res.sendFile(path.join(__dirname+'/dist/tooltip/index.html'));
 });
@@ -26,7 +26,7 @@ app.use(bodyparser.urlencoded({extended: false}));
 passport.use('local', localStrategy);
 app.use(passport.initialize());
 
-app.use('/auth', require('./BACKEND/routes/auth'))
+app.use('/auth', require('./routes/auth'))
 
 app.listen(port, () => {
     console.log(`Servidor corriendo en puerto ${port}...`);

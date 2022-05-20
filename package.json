@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "watch": "ng build --watch --configuration development",
-    "start": "node index.js",
+    "start": "node ./src/app/BACKEND/index.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
