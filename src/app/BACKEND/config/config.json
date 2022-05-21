@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "USERJAVI",
-    "password": "80169565",
-    "database": "TOOLTIP",
-    "host": "127.0.0.1",
+    "username": "ADMIN",
+    "password": "80169565yY..",
+    "database": "oracle",
+    "host": "db20220521014938_medium",
     "dialect": "oracle"
   },
   "test": {
